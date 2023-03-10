@@ -1,5 +1,5 @@
 ## NPF funded project to present citizen science data to the public and land managers
-## This app is specific to Acadia National Park, though the area of interest is easily changed
+## This app is specific to Katahdin Woods and Waters, though the area of interest is easily changed
 
 
 #### Starting up ####
@@ -36,7 +36,7 @@ ui <- fluidPage(
   tags$head(
     tags$link(type = "text/css", rel = "stylesheet", href = "css/style.css"),
     tags$meta(name = "viewport", content = "width=device-width, initial-scale=1.0"),
-    tags$title("Acadia National Park Citizen Science Explorer"),
+    tags$title("KWW Citizen Science Explorer"),
     tags$script(src = "css/index.js", type = "module", "defer")
   ),
 
@@ -73,7 +73,7 @@ ui <- fluidPage(
     
     ## Home
     div(class = "titlebox",
-       h1(textOutput("title"), class = "title-homepage"),
+       h1("Katahdin Woods and Waters National Monument", class = "title-homepage"),
        h3("Citizen Science Explorer", class = "subtitle-homepage")
     ),
     div(class = "photo-cred",
@@ -90,15 +90,14 @@ ui <- fluidPage(
                 icon("book-open",  class = "body-box-icon"), 
                 h4("Introduction", class = "body-titles")),
             div(class = "intro-content",
-                img(src = "img/citsci.jpg", alt = "A group of citizen scientists collecting data
+                img(src = "img/FriendsLogo_BlueforWeb.png", alt = "A group of citizen scientists collecting data
                     with iNatuarlist", class = "citsci-image"),
                 div(class = "intro-text",
-                    h2("Welcome to the Acadia National Park citizen science explorer!"),
-                    h3("Here you will find summaries of Acadia National Park iNaturalist and eBird records from the last week.
+                    h2("Welcome to the Katahdin Woods and Waters citizen science explorer!"),
+                    h3("Here you will find summaries of Katahdin Woods and Waters iNaturalist and eBird records from the last week.
                         In addition to summaries, we present some recent science that has been made possible
                         by citizen science participation in our projects. To get involved with one of our projects
-                        as a citizen scientist, ask for more information in the Rockefeller Hall Visitor Center on the 
-                       Schoodic Institute campus or click the button below!"),
+                        as a citizen scientist click the button below!"),
                     a(href = "https://schoodicinstitute.org/science/citizen-science/", 
                           target = "_blank", tabindex = "-1", tags$button(class = "btn-purple", "Get involved!")),
                     div(class = "intro-three",
@@ -162,6 +161,61 @@ ui <- fluidPage(
                     icon("database"),
                     h2(textOutput("percent_text_e"), class = "percent-stat-text"))))
     ),
+    
+    ## Gallery
+    div(class = "box-photo-gallery",
+        div(class = "anchors", id = "gallery"),
+        div(class = "body-title-box",
+            icon("image",  class = "body-box-icon"),
+            h4("Photo Gallery", class = "body-titles")),
+        div(class = "grid-wrapper",
+            div(tabindex = 0, class = ifelse(length(images$src) < 1, "no-imgs", "hidden"),
+                img(src = "img/ice.jpg"),
+                div(class = "no-photos",
+                    h3("No research grade photos this week."),
+                    h3("Go take some!"))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
+                img(src = images$src[1], alt = images$id[1]),
+                div(class = "img-label",
+                    h3(images$id[1]),
+                    h4("©", images$user[1]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
+                img(src = images$src[2], alt = images$id[2]),
+                div(class = "img-label",
+                    h3(images$id[2]),
+                    h4("©", images$user[2]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
+                img(src = images$src[3], alt = images$id[3]),
+                div(class = "img-label",
+                    h3(images$id[3]),
+                    h4("©", images$user[3]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
+                img(src = images$src[4], alt = images$id[4]),
+                div(class = "img-label",
+                    h3(images$id[4]),
+                    h4("©", images$user[4]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
+                img(src = images$src[5], alt = images$id[5]),
+                div(class = "img-label",
+                    h3(images$id[5]),
+                    h4("©", images$user[5]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
+                img(src = images$src[6], alt = images$id[6]),
+                div(class = "img-label",
+                    h3(images$id[6]),
+                    h4("©", images$user[6]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
+                img(src = images$src[7], alt = images$id[7]),
+                div(class = "img-label",
+                    h3(images$id[7]),
+                    h4("©", images$user[7]))),
+            div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
+                img(src = images$src[8], alt = images$id[8]),
+                div(class = "img-label",
+                    h3(images$id[8]),
+                    h4("©", images$user[8])))
+        )
+    ),
 
     ## Species explorer
     div(class = "spex-box",
@@ -221,61 +275,6 @@ ui <- fluidPage(
                   target = "_blank", tabindex = "-1", tags$button(class = "btn-green", "Learn more"))))
         ),
                 
-    ## Gallery
-    div(class = "box-photo-gallery",
-        div(class = "anchors", id = "gallery"),
-        div(class = "body-title-box",
-            icon("image",  class = "body-box-icon"),
-            h4("Photo Gallery", class = "body-titles")),
-        div(class = "grid-wrapper",
-            div(tabindex = 0, class = ifelse(length(images$src) < 1, "no-imgs", "hidden"),
-                img(src = "img/ice.jpg"),
-                div(class = "no-photos",
-                    h3("No research grade photos this week."),
-                    h3("Go take some!"))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 1, "img-container", "hidden"),
-                img(src = images$src[1], alt = images$id[1]),
-                div(class = "img-label",
-                    h3(images$id[1]),
-                    h4("©", images$user[1]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 2, "img-container", "hidden"),
-                img(src = images$src[2], alt = images$id[2]),
-                div(class = "img-label",
-                    h3(images$id[2]),
-                    h4("©", images$user[2]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 3, "img-container", "hidden"),
-                img(src = images$src[3], alt = images$id[3]),
-                div(class = "img-label",
-                    h3(images$id[3]),
-                    h4("©", images$user[3]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 4, "img-container", "hidden"),
-                img(src = images$src[4], alt = images$id[4]),
-                div(class = "img-label",
-                    h3(images$id[4]),
-                    h4("©", images$user[4]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 5, "img-container", "hidden"),
-                img(src = images$src[5], alt = images$id[5]),
-                div(class = "img-label",
-                    h3(images$id[5]),
-                    h4("©", images$user[5]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 6, "img-container", "hidden"),
-                img(src = images$src[6], alt = images$id[6]),
-                div(class = "img-label",
-                    h3(images$id[6]),
-                    h4("©", images$user[6]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 7, "img-container", "hidden"),
-                img(src = images$src[7], alt = images$id[7]),
-                div(class = "img-label",
-                    h3(images$id[7]),
-                    h4("©", images$user[7]))),
-            div(tabindex = 0, class = ifelse(length(images$src) >= 8, "img-container", "hidden"),
-                img(src = images$src[8], alt = images$id[8]),
-                div(class = "img-label",
-                    h3(images$id[8]),
-                    h4("©", images$user[8])))
-            )
-        ),
-    
     ## About
     div(class = "about-grid-box",
         div(class = "anchors", id = "about"),
@@ -295,7 +294,7 @@ ui <- fluidPage(
             in protected areas like national parks. These data have generally not been analyzed 
             to inform park management or summarized and communicated back out to the park visitors 
             who helped collect the data. This project was created to address these points and assess 
-            the biodiversity of Acadia National Park through building a citizen science analysis
+            the biodiversity of Katahdin Woods and Waters through building a citizen science analysis
             workflow that is transferable across protected areas.",
             # h4("Code"),
             # "Code and required elements to generate this Shiny app are available on ",

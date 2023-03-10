@@ -3,14 +3,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 :root {
-  --clr-base-blue: rgb(146, 206, 208, 1);
-  --clr-base-green: rgb(85, 143, 94, 1);
+  --clr-base-blue: rgb(180, 180, 180, 1);
+  --clr-base-green: rgb(40, 150, 222, 1);
   --clr-base-purple: rgba(13, 4, 42, 1);
 
-  --clr-opaque-green: rgb(85, 143, 94, 0.7);
+  --clr-opaque-green: rgb(20, 130, 202, 0.7);
   --clr-opaque-purple: rgba(13, 4, 42, 0.7);
 
-  --clr-body-boxes: rgba(122, 154, 157, 0.6);
+  --clr-body-boxes: rgb(220, 220, 220, 0.5);
 }
 
 * {
@@ -66,7 +66,7 @@ table.dataTable th:focus {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-image: url("../img/background_BT.jpg");
+  background-image: url("../img/mk.JPG");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -136,7 +136,7 @@ ol[role="list"] {
 .btn-purple:focus,
 .btn-green:hover,
 .btn-green:focus {
-  background-color: var(--clr-base-blue);
+  background-color: rgb(240, 240, 240);
   color: var(--clr-base-purple);
 }
 
@@ -240,7 +240,7 @@ nav a::before {
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: rgb(146, 206, 208);
+  background-color: var(--clr-base-blue);
   
   transform: scaleX(0);
   transform-origin: right;
@@ -272,13 +272,14 @@ nav a:focus::before {
   position: relative;
   text-align: left;
   margin-top: 50px;
+  width: 95%;
   /*top: 140px;*/
 }
 
 .title-homepage {
   position: relative;
   color: var(--clr-base-purple);
-  font-size: 6.3vw;
+  font-size: 5vw;
   font-weight: 600;
   margin-left: 20px;
 }
@@ -300,6 +301,11 @@ nav a:focus::before {
 }
 
 .photo-cred > a {
+  color: var(--clr-base-green);
+}
+
+.photo-cred > a:hover,
+.photo-cred > a:focus {
   color: var(--clr-base-blue);
 }
 
@@ -827,6 +833,11 @@ nav a:focus::before {
 }
 
 .about-info-box > a {
+  color: var(--clr-base-green);
+}
+
+.about-info-box > a:hover,
+.about-info-box > a:focus {
   color: var(--clr-base-blue);
 }
 
