@@ -10,7 +10,7 @@ source("00_app_functions.R")
 
 ## Data
 # Read in the base data
-the_data <- read.csv("www/datasets/the_data.csv") %>% 
+the_data <- read.csv("www/datasets/the_data2.csv") %>% 
   arrange(common.name)
 
 # Images
@@ -54,9 +54,9 @@ ui <- fluidPage(
                           tags$li(tags$a(href = "#", "Home")),
                           tags$li(tags$a(href = "#intro", "Introduction")),
                           tags$li(tags$a(href = "#summary", "Summary")),
+                          tags$li(tags$a(href = "#gallery", "Gallery")),
                           tags$li(tags$a(href = "#spex", "Species Explorer")),
                           tags$li(tags$a(href = "#science", "Science")),
-                          tags$li(tags$a(href = "#gallery", "Gallery")),
                           tags$li(tags$a(href = "#about", "About"))))),
      tags$nav(class = "mobile-nav",
               tags$button(class = "nav-toggle",
@@ -101,9 +101,9 @@ ui <- fluidPage(
                     a(href = "https://schoodicinstitute.org/science/citizen-science/", 
                           target = "_blank", tabindex = "-1", tags$button(class = "btn-purple", "Get involved!")),
                     div(class = "intro-three",
-                        img(src = "img/trsw.jpeg", alt = "Tree Swallow sitting on a wooden post"),
-                        img(src = "img/frog.jpg", alt = "Northern Leopard Frog in a gravel path"),
-                        img(src = "img/monarch.jpg", alt = "Monarch feeding from a red clover flower"))
+                        img(src = "img/bbwo.jpg", alt = "Black-backed woodpecker on a spruce tree"),
+                        img(src = "img/moose.jpg", alt = "A Moose in Katahdin Woods and Waters"),
+                        img(src = "img/mocl.jpg", alt = "Morning Cloak butterfly on a gravel road"))
                     ))
                     
     )),
@@ -134,9 +134,10 @@ ui <- fluidPage(
                     h4(tags$b("Most Common Species")),
                     icon("leaf"),
                     h2(textOutput("top_sp"), class = "summary-stat-text")),
-                div(class = "percent-format",
-                    icon("database"),
-                    h2(textOutput("percent_text_i"), class = "percent-stat-text")))),
+                # div(class = "percent-format",
+                #     icon("database"),
+                #     h2(textOutput("percent_text_i"), class = "percent-stat-text"))
+                )),
         div(class = "ebird-box",
             img(src = "img/ebird.png", alt = "eBird", class = "obs-logos"),
             div(class = "sep-line"),
@@ -157,9 +158,10 @@ ui <- fluidPage(
                     h4(tags$b("Most Common Species")),
                     icon("crow"),
                     h2(textOutput("top_sp_e"), class = "summary-stat-text")),
-                div(class = "percent-format",
-                    icon("database"),
-                    h2(textOutput("percent_text_e"), class = "percent-stat-text"))))
+                # div(class = "percent-format",
+                #     icon("database"),
+                #     h2(textOutput("percent_text_e"), class = "percent-stat-text"))
+                ))
     ),
     
     ## Gallery
@@ -288,7 +290,10 @@ ui <- fluidPage(
             "Due to this grant, ",
             a("Schoodic Institute at Acadia National Park", href = "https://schoodicinstitute.org/",
               target = "_blank"),
-            "was able to create this Shiny application to communicate citizen science in parks.",
+            "was able to create this Shiny application in partnership with Katahdin Woods and Waters managers and", 
+            a("Friends of Katahdin Woods and Waters", href = "https://www.friendsofkww.org/",
+              target = "_blank"),
+            "to communicate citizen science in parks.",
             br(),br(),
             "There is a wealth of scientific data collected by citizen scientists that exists 
             in protected areas like national parks. These data have generally not been analyzed 
@@ -337,9 +342,9 @@ ui <- fluidPage(
                               tags$li(tags$a(href = "#", "Home")),
                               tags$li(tags$a(href = "#intro", "Introduction")),
                               tags$li(tags$a(href = "#summary", "Summary")),
+                              tags$li(tags$a(href = "#gallery", "Gallery")),
                               tags$li(tags$a(href = "#spex", "Species Explorer")),
                               tags$li(tags$a(href = "#science", "Science")),
-                              tags$li(tags$a(href = "#gallery", "Gallery")),
                               tags$li(tags$a(href = "#about", "About")))),
   
                   div(class = "footer-copyright-box",
