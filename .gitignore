@@ -37,3 +37,6 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+data/ebd_US-ME_relFeb-2023.txt
+data/kww_inat_obs_tax.csv
